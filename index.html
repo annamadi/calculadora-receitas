@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Calculadora de Receitas</title>
+  <meta name="description" content="Calcule ingredientes para esfiha e outras receitas a partir da quantidade desejada ou da farinha disponível.">
+  <meta name="theme-color" content="#C75B39">
+  <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icon.svg">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="header">
+    <img src="icon.svg" alt="" class="header-icon" width="36" height="36">
+    <h1>Calculadora de Receitas</h1>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <label class="select-label" for="receita-select">Receita</label>
+      <div class="receita-row">
+        <select id="receita-select" class="select"></select>
+        <button type="button" id="btn-editar" class="btn-icon-action" title="Editar receita">✏️</button>
+        <button type="button" id="btn-historico" class="btn-icon-action" title="Histórico">📋</button>
+      </div>
+      <p id="versao-indicador" class="versao-indicador hidden"></p>
+    </section>
+
+    <section class="card editor-panel hidden" id="editor-panel">
+      <div class="editor-header">
+        <h2>Editar receita</h2>
+        <button type="button" id="btn-fechar-editor" class="btn-icon-action" title="Fechar">✕</button>
+      </div>
+      <div class="editor-toggle-display">
+        <button type="button" class="display-btn active" data-display="percent">%</button>
+        <button type="button" class="display-btn" data-display="grams">g/1kg</button>
+      </div>
+      <div id="editor-massa" class="editor-secao">
+        <h3>Massa <span class="editor-hint">(relativo à farinha)</span></h3>
+        <div id="editor-massa-items"></div>
+        <button type="button" id="btn-add-ing-massa" class="btn-secondary">+ Ingrediente</button>
+      </div>
+      <div id="editor-recheio" class="editor-secao">
+        <h3>Recheio <span class="editor-hint">(% do peso total)</span></h3>
+        <div id="editor-recheio-items"></div>
+        <button type="button" id="btn-add-ing-recheio" class="btn-secondary">+ Ingrediente</button>
+      </div>
+      <div id="editor-params" class="editor-secao">
+        <h3>Parâmetros</h3>
+        <div id="editor-params-items" class="param-grid"></div>
+      </div>
+      <div class="editor-acoes">
+        <button type="button" id="btn-salvar-versao" class="btn-action btn-copiar">Salvar versão</button>
+        <button type="button" id="btn-desfazer" class="btn-action btn-desfazer">Desfazer</button>
+      </div>
+      <div class="editor-footer">
+        <button type="button" id="btn-resetar" class="btn-link">Resetar para original</button>
+        <button type="button" id="btn-exportar" class="btn-link">Exportar</button>
+        <button type="button" id="btn-copiar-json" class="btn-link">Copiar JSON</button>
+        <label class="btn-link">
+          Importar
+          <input type="file" id="input-importar" accept=".json" hidden>
+        </label>
+      </div>
+    </section>
+
+    <section class="card historico-panel hidden" id="historico-panel">
+      <div class="editor-header">
+        <h2>Histórico</h2>
+        <button type="button" id="btn-fechar-historico" class="btn-icon-action" title="Fechar">✕</button>
+      </div>
+      <div id="historico-lista"></div>
+    </section>
+
+    <section class="card">
+      <div class="modo-toggle">
+        <button type="button" class="modo-btn" data-modo="farinha" aria-pressed="true">Tenho X de farinha</button>
+        <button type="button" class="modo-btn" data-modo="quantidade" aria-pressed="false">Quantas quero fazer</button>
+      </div>
+
+      <div id="input-farinha" class="input-group">
+        <label for="farinha-input">Farinha disponível (g)</label>
+        <input type="number" id="farinha-input" min="100" step="50" value="1000" inputmode="numeric">
+        <p class="hint" id="hint-esfihas"></p>
+        <p id="aviso-sobra" class="aviso-sobra hidden"></p>
+      </div>
+
+      <div id="input-quantidade" class="input-group hidden">
+        <label for="principal-qty">Esfihas de <span id="sabor-principal-nome">Carne</span></label>
+        <input type="number" id="principal-qty" min="0" step="1" value="52" inputmode="numeric">
+      </div>
+
+      <div id="sabores-extras" class="sabores-extras"></div>
+      <button type="button" id="btn-add-sabor" class="btn-secondary">+ Adicionar sabor</button>
+    </section>
+
+    <section class="card collapsible">
+      <button type="button" class="collapsible-header" aria-expanded="false">
+        <span>Parâmetros avançados</span>
+        <span class="chevron">▸</span>
+      </button>
+      <div class="collapsible-body hidden">
+        <div class="param-grid" id="params-container"></div>
+      </div>
+    </section>
+
+    <section class="card resultados" id="resultados">
+      <h2>Resultado</h2>
+      <div id="resultado-resumo" class="resultado-resumo"></div>
+      <div id="resultado-massa" class="resultado-secao"></div>
+      <div id="resultado-recheio" class="resultado-secao"></div>
+      <div id="resultado-extras" class="resultado-secao"></div>
+    </section>
+
+    <section class="card checklist-section" id="checklist-section">
+      <h2>Lista de mercado</h2>
+      <p class="checklist-hint">Marque o que já tem em casa</p>
+      <div id="checklist-items"></div>
+      <button type="button" id="btn-limpar-checks" class="btn-secondary btn-limpar">Limpar marcações</button>
+    </section>
+
+    <section class="acoes">
+      <button type="button" id="btn-copiar" class="btn-action btn-copiar">
+        <span class="btn-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6.5 9.5a3 3 0 0 0 4.24 0l2-2a3 3 0 0 0-4.24-4.24l-1 1"/><path d="M9.5 6.5a3 3 0 0 0-4.24 0l-2 2a3 3 0 0 0 4.24 4.24l1-1"/></svg></span> Copiar link
+      </button>
+      <button type="button" id="btn-imagem" class="btn-action btn-imagem">
+        <span class="btn-icon"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v9m0 0L5 8m3 3 3-3M3 13h10"/></svg></span> Salvar imagem
+      </button>
+    </section>
+  </main>
+
+  <script src="receitas.js"></script>
+  <script src="editor.js"></script>
+  <script src="app.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('sw.js');
+    }
+  </script>
+</body>
+</html>

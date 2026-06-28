@@ -1,0 +1,17 @@
+{
+  "name": "Calculadora de Receitas",
+  "short_name": "Receitas",
+  "description": "Calcule ingredientes para esfiha e outras receitas",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#FFF9F3",
+  "theme_color": "#C75B39",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
