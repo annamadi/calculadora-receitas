@@ -1,11 +1,30 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <rect width="512" height="512" rx="96" fill="#FFF9F3"/>
-  <!-- Chef hat cloud (3 bumps) -->
-  <path d="M176 270 C160 270 148 250 148 230 C148 205 168 185 193 185 C196 165 215 145 240 140 C248 130 252 125 256 125 C260 125 264 130 272 140 C297 145 316 165 319 185 C344 185 364 205 364 230 C364 250 352 270 336 270" fill="#FFF9F3" stroke="#4A2C17" stroke-width="20" stroke-linejoin="round"/>
-  <!-- Hat body -->
-  <path d="M176 270 L176 380 L336 380 L336 270" fill="#FFF9F3" stroke="#4A2C17" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
-  <!-- Percent symbol -->
-  <circle cx="230" cy="310" r="16" fill="none" stroke="#D4A043" stroke-width="13"/>
-  <circle cx="282" cy="358" r="16" fill="none" stroke="#D4A043" stroke-width="13"/>
-  <line x1="276" y1="300" x2="236" y2="368" stroke="#D4A043" stroke-width="13" stroke-linecap="round"/>
+  <rect width="512" height="512" fill="#FFF9F3"/>
+
+  <!-- Back / depth -->
+  <path d="M118 118 L382 92 L382 372 L118 398 Z" fill="#B94F32" stroke="#4A2C17" stroke-width="12" stroke-linejoin="round"/>
+
+  <!-- Front cover -->
+  <path d="M118 118 L118 398 L350 398 L350 118 Z" fill="#C75B39" stroke="#4A2C17" stroke-width="12" stroke-linejoin="round"/>
+
+  <!-- Spine -->
+  <path d="M118 118 L118 398 L152 398 L152 118 Z" fill="#4A2C17" stroke="#4A2C17" stroke-width="12" stroke-linejoin="round"/>
+
+  <!-- Pages top -->
+  <path d="M152 118 L350 118 L382 92 L184 92 Z" fill="#FFF9F3" stroke="#4A2C17" stroke-width="10" stroke-linejoin="round"/>
+  <path d="M184 104 L382 104" fill="none" stroke="#4A2C17" stroke-width="7" stroke-linecap="round"/>
+  <path d="M184 92 L382 92" fill="none" stroke="#F5EDE4" stroke-width="5" stroke-linecap="round"/>
+
+  <!-- Bookmark -->
+  <path d="M268 68 L268 118 L286 104 L304 118 L304 68 Z" fill="#D4A043" stroke="#4A2C17" stroke-width="9" stroke-linejoin="round"/>
+
+  <!-- Chef hat -->
+  <path d="M196 248 C196 218 218 196 244 190 C252 174 254 168 262 168 C270 168 272 174 280 190 C306 196 328 218 328 248 L328 284 L196 284 Z" fill="#FFF9F3" stroke="#4A2C17" stroke-width="11" stroke-linejoin="round"/>
+  <ellipse cx="222" cy="226" rx="22" ry="20" fill="#FFF9F3" stroke="#4A2C17" stroke-width="11"/>
+  <ellipse cx="262" cy="208" rx="26" ry="22" fill="#FFF9F3" stroke="#4A2C17" stroke-width="11"/>
+  <ellipse cx="302" cy="226" rx="22" ry="20" fill="#FFF9F3" stroke="#4A2C17" stroke-width="11"/>
+
+  <!-- Text lines -->
+  <rect x="196" y="316" width="128" height="11" rx="5.5" fill="#4A2C17"/>
+  <rect x="196" y="342" width="88" height="11" rx="5.5" fill="#4A2C17"/>
 </svg>
