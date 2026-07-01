@@ -2,7 +2,7 @@
 
 Calculadora online para planejar receitas com base na quantidade desejada ou na farinha disponível. Comece com esfiha, adicione suas próprias receitas no futuro.
 
-**[Acesse aqui](https://annamadi.github.io/calculadora-esfiha/)**
+**[Acesse aqui](https://annamadi.github.io/calculadora-receitas/)**
 
 ## Funcionalidades
 
