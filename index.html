@@ -103,6 +103,14 @@
       </button>
       <div class="collapsible-body hidden">
         <div class="param-grid" id="params-container"></div>
+        <div class="divisor-group">
+          <label for="divisor-input">Dividir em</label>
+          <div class="divisor-row">
+            <input type="number" id="divisor-input" min="1" max="10" step="1" value="1" inputmode="numeric">
+            <span class="divisor-suffix">vez(es)</span>
+          </div>
+          <p class="divisor-hint hidden" id="divisor-hint"></p>
+        </div>
       </div>
     </section>
 

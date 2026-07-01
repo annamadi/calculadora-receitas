@@ -1,9 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <ellipse cx="256" cy="280" rx="200" ry="180" fill="#D4A043"/>
-  <ellipse cx="256" cy="270" rx="180" ry="160" fill="#FFF9F3"/>
-  <path d="M256 120 L160 340 L352 340 Z" fill="#C75B39" opacity="0.85"/>
-  <circle cx="220" cy="280" r="15" fill="#4D7C3A" opacity="0.7"/>
-  <circle cx="270" cy="260" r="12" fill="#4D7C3A" opacity="0.6"/>
-  <circle cx="240" cy="310" r="10" fill="#4D7C3A" opacity="0.5"/>
-  <circle cx="290" cy="300" r="13" fill="#C75B39" opacity="0.6"/>
+  <rect width="512" height="512" rx="96" fill="#FFF9F3"/>
+  <!-- Chef hat cloud (3 bumps) -->
+  <path d="M176 270 C160 270 148 250 148 230 C148 205 168 185 193 185 C196 165 215 145 240 140 C248 130 252 125 256 125 C260 125 264 130 272 140 C297 145 316 165 319 185 C344 185 364 205 364 230 C364 250 352 270 336 270" fill="#FFF9F3" stroke="#4A2C17" stroke-width="20" stroke-linejoin="round"/>
+  <!-- Hat body -->
+  <path d="M176 270 L176 380 L336 380 L336 270" fill="#FFF9F3" stroke="#4A2C17" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+  <!-- Percent symbol -->
+  <circle cx="230" cy="310" r="16" fill="none" stroke="#D4A043" stroke-width="13"/>
+  <circle cx="282" cy="358" r="16" fill="none" stroke="#D4A043" stroke-width="13"/>
+  <line x1="276" y1="300" x2="236" y2="368" stroke="#D4A043" stroke-width="13" stroke-linecap="round"/>
 </svg>

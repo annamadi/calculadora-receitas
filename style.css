@@ -171,6 +171,7 @@ body {
 
 .sabor-extra-row input[type="text"] {
   flex: 2;
+  min-width: 0;
   padding: 0.5rem 0.6rem;
   font-size: 0.95rem;
   border: 2px solid var(--seashell-dark);
@@ -181,6 +182,8 @@ body {
 
 .sabor-extra-row input[type="number"] {
   flex: 1;
+  min-width: 50px;
+  max-width: 70px;
   padding: 0.5rem 0.6rem;
   font-size: 0.95rem;
   border: 2px solid var(--seashell-dark);
@@ -1020,4 +1023,60 @@ body {
   color: var(--walnut-light);
   margin-top: 0.25rem;
   font-style: italic;
+}
+
+.divisor-group {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--seashell-dark);
+}
+
+.divisor-group label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.divisor-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.divisor-row input {
+  width: 60px;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 2px solid var(--seashell-dark);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.divisor-row input:focus {
+  outline: none;
+  border-color: var(--golden);
+}
+
+.divisor-suffix {
+  font-size: 0.85rem;
+  color: var(--walnut-light);
+}
+
+.divisor-hint {
+  font-size: 0.75rem;
+  color: var(--pistachio);
+  margin-top: 0.3rem;
+  font-weight: 500;
+}
+
+.resultado-divisor {
+  background: var(--seashell);
+  border-radius: 8px;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+  color: var(--walnut-light);
+  text-align: center;
+  font-weight: 500;
 }

@@ -107,6 +107,7 @@
     $("#btn-copiar").addEventListener("click", copiarLink);
     $("#btn-imagem").addEventListener("click", salvarImagem);
     $("#btn-limpar-checks").addEventListener("click", limparChecks);
+    $("#divisor-input").addEventListener("input", calcular);
   }
 
   function atualizarSaborPrincipalNome() {
@@ -237,6 +238,8 @@
   }
 
   function renderResultados(total, qtdPrincipal, massa, recheio, receita) {
+    const divisor = parseInt($("#divisor-input").value) || 1;
+
     let resumoHtml = `<div class="resumo-total">${total} esfihas no total</div>`;
     const saboresInfo = [];
     if (qtdPrincipal > 0) {
@@ -248,6 +251,9 @@
     if (saboresInfo.length > 0) {
       resumoHtml += `<div class="resumo-sabores">${saboresInfo.join(" · ")}</div>`;
     }
+    if (divisor > 1) {
+      resumoHtml += `<div class="resultado-divisor">Dividido em ${divisor} vezes (${Math.ceil(total / divisor)} esfihas por vez)</div>`;
+    }
     $("#resultado-resumo").innerHTML = resumoHtml;
 
     const massaHtml = Object.values(massa)
@@ -255,11 +261,12 @@
         (i) => `<div class="ingrediente-row">
         <span class="nome">${i.nome}</span>
         <span class="leader"></span>
-        <span class="valor">${formatarValor(i.valor, i.unidade)}</span>
+        <span class="valor">${formatarValor(i.valor / divisor, i.unidade)}</span>
       </div>`
       )
       .join("");
-    $("#resultado-massa").innerHTML = `<h3>Massa</h3>${massaHtml}`;
+    const massaTitle = divisor > 1 ? `Massa <span style="font-weight:400;text-transform:none">(por vez)</span>` : "Massa";
+    $("#resultado-massa").innerHTML = `<h3>${massaTitle}</h3>${massaHtml}`;
 
     if (recheio) {
       const recheioHtml = Object.values(recheio)
@@ -267,11 +274,15 @@
           (i) => `<div class="ingrediente-row">
           <span class="nome">${i.nome}</span>
           <span class="leader"></span>
-          <span class="valor">${formatarValor(i.valor, i.unidade)}</span>
+          <span class="valor">${formatarValor(i.valor / divisor, i.unidade)}</span>
         </div>`
         )
         .join("");
-      $("#resultado-recheio").innerHTML = `<h3>Recheio de ${receita.saborPrincipal.nome} (${qtdPrincipal} un.)</h3>${recheioHtml}`;
+      const recheioQtd = Math.ceil(qtdPrincipal / divisor);
+      const recheioTitle = divisor > 1
+        ? `Recheio de ${receita.saborPrincipal.nome} (${recheioQtd} un. por vez)`
+        : `Recheio de ${receita.saborPrincipal.nome} (${qtdPrincipal} un.)`;
+      $("#resultado-recheio").innerHTML = `<h3>${recheioTitle}</h3>${recheioHtml}`;
     } else {
       $("#resultado-recheio").innerHTML = "";
     }
